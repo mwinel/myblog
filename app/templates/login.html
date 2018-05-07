@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-group">
+    <form class="form-login" action="" method="post">
+        <h1 class="h4 mb-3 font-weight-normal">Please Login</h1>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username(class="form-control", placeholder="Username", size=32) }}
+            {% for error in form.username.errors %}
+            <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password(class="form-control", placeholder="Password", size=32) }}
+            {% for error in form.password.errors %}
+            <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.remember_me(class="checkbox mb-3") }} 
+            {{ form.remember_me.label }}
+        </p>
+        <p>
+            {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+        </p>
+        <p>New user? <a href="{{ url_for('register') }}">Click to register</a></p>
+    </form>
+</div>
+{% endblock %}
